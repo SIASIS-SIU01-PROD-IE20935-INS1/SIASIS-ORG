@@ -43,7 +43,7 @@ jobs:
           if git diff --staged --quiet; then
             echo "No hay cambios para sincronizar en repositorio 1"
           else
-            git commit -m "Sync changes from siu01 cert branch (includes deleted files)"
+            git commit -m "Sync changes from siasis org dev master branch (includes deleted files)"
             echo "Haciendo push de los cambios al repositorio destino 1..."
             git push origin master
           fi
