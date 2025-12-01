@@ -1,0 +1,46 @@
+name: Enviar Correo - Solicitud Implementación SIASIS
+
+on:
+  repository_dispatch:
+    types: [solicitud-implementacion-siasis]
+
+jobs:
+  enviar-correo:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout del repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Instalar dependencias
+        run: |
+          npm install nodemailer tsx @types/node
+
+      - name: Enviar correo con los datos del formulario
+        env:
+          EMAIL_USER: ${{ secrets.SE01_SIASIS_EMAIL_USER }}
+          EMAIL_PASSWORD: ${{ secrets.SE01_SIASIS_EMAIL_APPLICATION_PASSWORD }}
+          CORREO_DESTINO: ${{ secrets.CORREO_DESTINO }}
+          NOMBRE_COMPLETO: ${{ github.event.client_payload.nombreCompleto }}
+          CARGO: ${{ github.event.client_payload.cargo }}
+          EMAIL_SOLICITANTE: ${{ github.event.client_payload.email }}
+          TELEFONO: ${{ github.event.client_payload.telefono }}
+          INSTITUCION: ${{ github.event.client_payload.institucion }}
+          MENSAJE: ${{ github.event.client_payload.mensaje }}
+        run: |
+          npx tsx ./src/scripts/enviarCorreo.ts
+
+      - name: Notificar resultado
+        if: always()
+        run: |
+          if [ $? -eq 0 ]; then
+            echo "✅ Correo enviado exitosamente"
+          else
+            echo "❌ Error al enviar el correo"
+            exit 1
+          fi

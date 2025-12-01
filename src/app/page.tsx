@@ -9,8 +9,10 @@ import {
   Mail,
   Phone,
   MapPin,
+  Contact,
 } from "lucide-react";
 import SchoolModal, { SchoolData } from "../components/school-modal";
+import ContactSectionWithAPI from "../components/ContactSection";
 
 const contactData = {
   email: "juanchavezsaldana1@gmail.com",
@@ -26,7 +28,7 @@ const schools: SchoolData[] = [
     logo: "/images/png/LogoColegioIE20935.png",
     students: 450,
     teachers: 35,
-    implementationYear: 2023,
+    implementationYear: 2025,
     reduction: "16% a 5%",
     description:
       "Institución educativa líder en innovación tecnológica en la región de Cañete, pionera en implementar sistemas de control de asistencia inteligente.",
@@ -40,13 +42,22 @@ const schools: SchoolData[] = [
     testimonialAuthor: "Lic. María González",
     testimonialRole: "Directora",
     media: [
-      { type: "video", url: "/director-oficina-gestion.jpg" },
-      { type: "image", url: "/computadora-sistema-asistencia.jpg" },
       {
         type: "image",
         url: "/images/jpg/ImplementacionSistemaIE20935-1.jpg",
         description:
           "Luego de una Capacitación del personal docente para usar el sistema",
+      },
+      {
+        type: "video",
+        url: "https://www.youtube.com/watch?v=LxDBGEZLN3Y",
+        description: "Profesora registrando su Asistencia en el Sistema",
+      },
+      {
+        type: "video",
+        url: "https://www.youtube.com/watch?v=zLLryQSyFzM",
+        description:
+          "Auxiliar registrando asistencias de estudiantes mediante QR",
       },
     ],
   },
@@ -243,7 +254,9 @@ export default function SIASISLanding() {
                 <li className="flex items-start gap-3">
                   <CheckCircle className="w-6 h-6 text-blue-600 flex-shrink-0 mt-1" />
                   <span>
-                    <b>Validación por GPS:</b> Solo permite registrar asistencia dentro del perímetro del colegio mediante geolocalización del dispositivo
+                    <b>Validación por GPS:</b> Solo permite registrar asistencia
+                    dentro del perímetro del colegio mediante geolocalización
+                    del dispositivo
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
@@ -273,6 +286,106 @@ export default function SIASISLanding() {
           </div>
 
           {/* Feature 2 */}
+          <div className="grid md:grid-cols-2 gap-12 items-center mb-20 group">
+            <div className="order-2 md:order-1">
+              <h3 className="text-4xl font-bold mb-4">
+                Control de Asistencia de Estudiantes
+              </h3>
+              <p className="text-lg text-black/70 dark:text-white/70 mb-8 leading-relaxed text-[1rem]">
+                Automatiza el registro de asistencia mediante códigos QR únicos.
+                El auxiliar escanea con su celular y el sistema determina
+                automáticamente si es puntual, tardanza o falta según el horario
+                establecido.
+              </p>
+              <ul className="space-y-3">
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="w-6 h-6 text-teal-600 flex-shrink-0 mt-1" />
+                  <span>
+                    <b>Toma de asistencia con tarjetas QR:</b> El sistema
+                    permite crear tarjetas con código QR único para cada
+                    estudiante, listas para imprimir y distribuir. Los
+                    estudiantes las presentan diariamente para marcar asistencia
+                    en segundos
+                  </span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="w-6 h-6 text-teal-600 flex-shrink-0 mt-1" />
+                  <span>
+                    <b>Funciona sin internet:</b> Si se cae el internet, el
+                    sistema sigue funcionando. Guarda los registros en el
+                    celular y los envía automáticamente cuando vuelva la
+                    conexión
+                  </span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="w-6 h-6 text-teal-600 flex-shrink-0 mt-1" />
+                  <span>
+                    <b>Seguimiento para padres en tiempo real:</b> Los padres
+                    revisan desde su celular la asistencia diaria y mensual de
+                    sus hijos, con hora exacta de llegada y contacto directo con
+                    el profesors
+                  </span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="w-6 h-6 text-teal-600 flex-shrink-0 mt-1" />
+                  <span>
+                    <b>Reportes automáticos descargables:</b>Genera reportes
+                    completos por aula en Excel con asistencias, tardanzas y
+                    faltas del mes.{" "}
+                    <a
+                      className="text-blue-500 underline"
+                      href="/files/excel/Asistencias_Secundaria_3A_Noviembre_2025.xlsx"
+                      download
+                    >
+                      Descargar Ejemplo
+                    </a>
+                  </span>
+                </li>
+              </ul>
+            </div>
+            <div className="order-1 md:order-2 overflow-hidden rounded-2xl shadow-2xl">
+              <img
+                src="/images/png/TarjetasQRs.png"
+                alt="Notificaciones automáticas"
+                className="w-full h-96 object-cover group-hover:scale-105 transition duration-500"
+              />
+            </div>
+          </div>
+
+          {/* Feature 3 */}
+          <div className="grid md:grid-cols-2 gap-12 items-center group mb-20">
+            <div className="overflow-hidden rounded-2xl shadow-2xl">
+              <img
+                src="/images/jpg/reportes-inteligentes-an-lisis-datos-dashboard.jpg"
+                alt="Reportes inteligentes"
+                className="w-full h-96 object-cover group-hover:scale-105 transition duration-500"
+              />
+            </div>
+            <div>
+              <h3 className="text-4xl font-bold mb-6">Reportes Inteligentes</h3>
+              <p className="text-lg text-black/70 dark:text-white/70 mb-8 leading-relaxed">
+                Genera reportes detallados con un solo clic. Visualiza
+                tendencias, identifica patrones y toma decisiones basadas en
+                datos reales.
+              </p>
+              <ul className="space-y-4">
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="w-6 h-6 text-blue-600 flex-shrink-0 mt-1" />
+                  <span>Reportes mensuales y diarios automatizados</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="w-6 h-6 text-blue-600 flex-shrink-0 mt-1" />
+                  <span>Exportación en Excel</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="w-6 h-6 text-blue-600 flex-shrink-0 mt-1" />
+                  <span>Dashboard con métricas en tiempo real</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Feature 4 */}
           <div className="grid md:grid-cols-2 gap-12 items-center mb-20 group">
             <div className="order-2 md:order-1">
               <h3 className="text-4xl font-bold mb-6">
@@ -306,39 +419,6 @@ export default function SIASISLanding() {
                 alt="Notificaciones automáticas"
                 className="w-full h-96 object-cover group-hover:scale-105 transition duration-500"
               />
-            </div>
-          </div>
-
-          {/* Feature 3 */}
-          <div className="grid md:grid-cols-2 gap-12 items-center group">
-            <div className="overflow-hidden rounded-2xl shadow-2xl">
-              <img
-                src="/images/jpg/reportes-inteligentes-an-lisis-datos-dashboard.jpg"
-                alt="Reportes inteligentes"
-                className="w-full h-96 object-cover group-hover:scale-105 transition duration-500"
-              />
-            </div>
-            <div>
-              <h3 className="text-4xl font-bold mb-6">Reportes Inteligentes</h3>
-              <p className="text-lg text-black/70 dark:text-white/70 mb-8 leading-relaxed">
-                Genera reportes detallados con un solo clic. Visualiza
-                tendencias, identifica patrones y toma decisiones basadas en
-                datos reales.
-              </p>
-              <ul className="space-y-4">
-                <li className="flex items-start gap-3">
-                  <CheckCircle className="w-6 h-6 text-blue-600 flex-shrink-0 mt-1" />
-                  <span>Reportes mensuales y diarios automatizados</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <CheckCircle className="w-6 h-6 text-blue-600 flex-shrink-0 mt-1" />
-                  <span>Exportación en Excel</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <CheckCircle className="w-6 h-6 text-blue-600 flex-shrink-0 mt-1" />
-                  <span>Dashboard con métricas en tiempo real</span>
-                </li>
-              </ul>
             </div>
           </div>
         </div>
@@ -482,143 +562,7 @@ export default function SIASISLanding() {
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section
-        id="contacto"
-        className="py-24 px-4 bg-slate-50 dark:bg-slate-900/50"
-      >
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              ¿Listo para Transformar tu Institución?
-            </h2>
-            <p className="text-xl text-black/60 dark:text-white/60">
-              Contáctanos y descubre cómo SIASIS puede mejorar la gestión de
-              asistencia
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8 mb-12">
-            <div className="flex items-center gap-4">
-              <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center">
-                <Mail className="text-blue-600" />
-              </div>
-              <div>
-                <p className="font-semibold">Email</p>
-                <p className="text-black/60 dark:text-white/60 text-[0.85rem]">
-                  juanchavezsaldana1@gmail.com
-                </p>
-              </div>
-            </div>
-            <div className="flex items-center gap-4">
-              <div className="w-12 h-12 bg-teal-100 dark:bg-teal-900/30 rounded-full flex items-center justify-center">
-                <Phone className="text-teal-600" />
-              </div>
-              <div>
-                <p className="font-semibold">Teléfono</p>
-                <p className="text-black/60 dark:text-white/60">
-                  +51 961 863 783
-                </p>
-              </div>
-            </div>
-            <div className="flex items-center gap-4">
-              <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center">
-                <MapPin className="text-blue-600" />
-              </div>
-              <div>
-                <p className="font-semibold">Ubicación</p>
-                <p className="text-black/60 dark:text-white/60">
-                  Imperial, Cañete, Perú
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <form
-            onSubmit={handleSubmit}
-            className="bg-white dark:bg-black p-8 md:p-12 rounded-2xl shadow-xl border border-black/5 dark:border-white/5"
-          >
-            <div className="grid md:grid-cols-2 gap-6 mb-6">
-              <div>
-                <label className="block font-semibold mb-2">
-                  Nombre Completo *
-                </label>
-                <input
-                  type="text"
-                  required
-                  className="w-full px-4 py-3 rounded-lg border border-black/20 dark:border-white/20 focus:border-blue-600 focus:ring-2 focus:ring-blue-200 dark:focus:ring-blue-900/50 outline-none transition bg-white dark:bg-black/50"
-                  placeholder="Juan Pérez"
-                />
-              </div>
-              <div>
-                <label className="block font-semibold mb-2">Cargo *</label>
-                <input
-                  type="text"
-                  required
-                  className="w-full px-4 py-3 rounded-lg border border-black/20 dark:border-white/20 focus:border-blue-600 focus:ring-2 focus:ring-blue-200 dark:focus:ring-blue-900/50 outline-none transition bg-white dark:bg-black/50"
-                  placeholder="Director(a)"
-                />
-              </div>
-            </div>
-
-            <div className="grid md:grid-cols-2 gap-6 mb-6">
-              <div>
-                <label className="block font-semibold mb-2">Email *</label>
-                <input
-                  type="email"
-                  required
-                  className="w-full px-4 py-3 rounded-lg border border-black/20 dark:border-white/20 focus:border-blue-600 focus:ring-2 focus:ring-blue-200 dark:focus:ring-blue-900/50 outline-none transition bg-white dark:bg-black/50"
-                  placeholder=" correo@institucion.edu.pe"
-                />
-              </div>
-              <div>
-                <label className="block font-semibold mb-2">Teléfono *</label>
-                <input
-                  type="tel"
-                  required
-                  className="w-full px-4 py-3 rounded-lg border border-black/20 dark:border-white/20 focus:border-blue-600 focus:ring-2 focus:ring-blue-200 dark:focus:ring-blue-900/50 outline-none transition bg-white dark:bg-black/50"
-                  placeholder="+51 961 863 783"
-                />
-              </div>
-            </div>
-
-            <div className="mb-6">
-              <label className="block font-semibold mb-2">
-                Institución Educativa *
-              </label>
-              <input
-                type="text"
-                required
-                className="w-full px-4 py-3 rounded-lg border border-black/20 dark:border-white/20 focus:border-blue-600 focus:ring-2 focus:ring-blue-200 dark:focus:ring-blue-900/50 outline-none transition bg-white dark:bg-black/50"
-                placeholder="I.E. Nombre de la Institución"
-              />
-            </div>
-
-            <div className="mb-6">
-              <label className="block font-semibold mb-2">Mensaje *</label>
-              <textarea
-                required
-                rows={5}
-                className="w-full px-4 py-3 rounded-lg border border-black/20 dark:border-white/20 focus:border-blue-600 focus:ring-2 focus:ring-blue-200 dark:focus:ring-blue-900/50 outline-none transition bg-white dark:bg-black/50 resize-none"
-                placeholder="Cuéntanos sobre tu institución..."
-              />
-            </div>
-
-            {formStatus && (
-              <div className="mb-6 p-4 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-lg">
-                {formStatus}
-              </div>
-            )}
-
-            <button
-              type="submit"
-              className="w-full bg-gradient-to-r from-blue-600 to-teal-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:shadow-xl transition transform hover:scale-105"
-            >
-              Solicitar Información
-            </button>
-          </form>
-        </div>
-      </section>
+      <ContactSectionWithAPI />
 
       {/* Footer */}
       <footer className="bg-black text-white py-12 px-4 dark:bg-black">
