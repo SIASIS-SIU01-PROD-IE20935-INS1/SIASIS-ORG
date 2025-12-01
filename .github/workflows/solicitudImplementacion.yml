@@ -24,7 +24,7 @@ jobs:
       - name: Enviar correo con los datos del formulario
         env:
           EMAIL_USER: ${{ secrets.SE01_SIASIS_EMAIL_USER }}
-          EMAIL_PASSWORD: ${{ secrets.SE01_SIASIS_EMAIL_APPLICATION_PASSWORD }}
+          EMAIL_APPLICATION_PASSWORD: ${{ secrets.SE01_SIASIS_EMAIL_APPLICATION_PASSWORD }}
           CORREO_DESTINO: ${{ secrets.CORREO_DESTINO }}
           NOMBRE_COMPLETO: ${{ github.event.client_payload.nombreCompleto }}
           CARGO: ${{ github.event.client_payload.cargo }}
